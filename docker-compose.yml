@@ -1,0 +1,145 @@
+version: "3.4"
+
+x-rasa-services: &default-rasa-service
+  restart: always
+  image: "rasa/rasa:${RASA_VERSION}-full"
+  volumes:
+  - ./:/app
+  expose:
+  - "5005"
+  entrypoint: /bin/bash -c "make run-server"
+  depends_on:
+  - rasa-x
+  - app
+  - rabbit
+
+services:
+  rasa-x:
+    restart: always
+    image: "rasa/rasa-x:${RASA_X_VERSION}"
+    expose:
+      - "5002"
+    volumes:
+      - ./models:/app/models
+      - ./environments.yml:/app/environments.yml
+      - ./logs:/logs
+      - ./auth:/app/auth
+    env_file:
+      - .env_files/rabbitmq.env
+      - .env_files/rasa-x.env
+    environment:
+      RABBITMQ_QUEUE: "rasa_production_events"
+    depends_on:
+      - db
+
+  rasa-production:
+    <<: *default-rasa-service
+    ports:
+      - "127.0.0.1:5005:5005"
+    env_file:
+      - .env_files/rabbitmq.env
+      - .env_files/rasa-x.env
+      - .env_files/rasa.env
+    environment:
+      RABBITMQ_QUEUE: "rasa_production_events"
+
+  rasa-worker:
+    <<: *default-rasa-service
+    env_file:
+      - .env_files/rabbitmq.env
+      - .env_files/rasa-x.env
+      - .env_files/rasa.env
+    environment:
+      RABBITMQ_QUEUE: "rasa_worker_events"
+
+  rasa-development:
+    <<: *default-rasa-service
+    env_file:
+      - .env_files/rabbitmq.env
+      - .env_files/rasa-x.env
+      - .env_files/rasa.env
+    environment:
+      RABBITMQ_QUEUE: "rasa_development_events"
+
+  app:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile-Action
+      args: 
+        version: "${RASA_VERSION}"
+    image: "tigi-action"
+    volumes:
+      - ./actions:/app/actions
+      - ./config:/app/config
+      - ./data:/app/data
+      - ./models:/app/models
+      - ./db_connector:/app/db_connector
+      - ./domain.yml:/app/domain.yml
+      - ./endpoints.yml:/app/endpoints.yml
+      - ./filter.csv:/app/filter.csv
+    environment:
+            RECOMMENDER_API: "http://tigi-recommender:5000"
+            QUESTION_ANSWERING_API: "http://tigi-dialogmodel:5000"
+            PERSONALREVIEWSUMMARY_API: "http://tigi-personalreviewsummary:5000"
+    expose:
+      - "5055"
+    ports:
+      - "5055:5055"
+
+  db:
+    restart: always
+    image: "bitnami/postgresql:11.2.0"
+    expose:
+      - "5432"
+    env_file:
+      - .env_files/postgresql.env
+    volumes:
+      - ./db:/bitnami/postgresql
+
+  rabbit:
+    restart: always
+    image: "bitnami/rabbitmq:3.7.5"
+    env_file:
+      - .env_files/rabbitmq.env
+    environment:
+      RABBITMQ_DISK_FREE_LIMIT: "{mem_relative, 0.1}"
+    expose:
+      - "5672"
+
+  duckling:
+    restart: always
+    image: "rasa/duckling:latest"
+    expose:
+      - "8000"
+    command: ["duckling-example-exe", "--no-access-log", "--no-error-log"]
+
+  nginx:
+    restart: always
+    image: "rasa/nginx:${RASA_X_VERSION}"
+    ports:
+      - "5001:8080"
+    volumes:
+      - ./certs:/opt/bitnami/certs
+      - ./terms:/opt/bitnami/nginx/conf/bitnami/terms
+    depends_on:
+      - rasa-x
+      - rasa-production
+
+        #  logger:
+        #    restart: always
+        #    image: "rasa/logger:${RASA_X_VERSION}"
+        #    command: ["/bin/sh", "-c", "docker-compose logs --no-color -f > logs/compose_`date '+%Y-%m-%d_%H:%M:%S'`.log"]
+        #    volumes:
+        #      - $PWD:$PWD
+        #      - /var/run/docker.sock:/var/run/docker.sock
+        #    working_dir: $PWD
+        #    depends_on:
+        #      - rasa-x
+        #      - rasa-production
+        #        #- rasa-worker
+        #        #- rasa-development
+        #      - app
+        #      - nginx
+        #      - duckling
+        #      - rabbit

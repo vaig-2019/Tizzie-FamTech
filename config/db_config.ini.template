@@ -1,0 +1,6 @@
+[DB_CONNECTION]
+HOST = localhost  
+PORT = 27017
+USERNAME = root
+PASSWORD = r00t
+DATABASE = example

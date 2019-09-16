@@ -1,0 +1,9 @@
+ARG version=latest
+FROM rasa/rasa-sdk:${version}
+
+WORKDIR /app
+COPY requirements.txt requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+#ENTRYPOINT ["python", "-m", "rasa_sdk", "start",  "--actions",  "actions.actions"]
+#ENTRYPOINT ["bash"]

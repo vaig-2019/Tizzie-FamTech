@@ -1,0 +1,156 @@
+%[affirm_agree]('training': '53', 'testing':'10')
+    ~[agree]
+
+%[affirm_disagree]('training': '37','testing':'3')
+    ~[disagree]
+
+|./aliases/affirm.chatette
+
+%[bye]('training': '2000', 'testing': '100')
+    ~[leaving?] ~[bye] ~[bot?]
+    ~[leaving] ~[bot?]
+|./aliases/leaving.chatette
+|./aliases/bye.chatette
+|./aliases/bot.chatette
+
+%[greet]('training': '200', 'testing': '20')
+    ~[hi] ~[bot?]
+|./aliases/hi.chatette
+|./aliases/bot.chatette
+
+%[suggestion]('training': '30', 'testing': '20')
+    ~[bot] @[suggestion]
+
+|./aliases/bot.chatette
+|./slots/suggestion.chatette
+
+// Ways to say thank you
+%[thank]('training': '10', 'testing': '1')
+    @[thank]
+
+|./slots/thank.chatette
+
+// Ways to inform user profile
+%[inform_profile]('training': '150', 'testing': '1')
+    @[user_age]
+    @[&user_name]
+    @[user_gender]
+    ~[concate?] @[user_name]
+
+|./slots/user_age.chatette
+|./slots/user_name.chatette
+|./slots/user_gender.chatette
+|./aliases/concate.chatette
+
+
+// Ways to inform_product
+%[inform]('training': '3000', 'testing': '20')
+    @[product_name]
+    @[product_color]
+    @[product_memory]
+    @[product_brand]
+
+|./slots/brand.chatette
+|./slots/product_battery.chatette
+|./slots/product_color.chatette
+|./slots/product_memory.chatette
+|./slots/product_name.chatette
+|./slots/product_brand.chatette
+|./slots/product_screensize.chatette
+|./slots/product_screen.chatette
+|./slots/product_waterproof.chatette
+|./slots/product_ram.chatette
+|./slots/product_selfie_score.chatette
+|./slots/product_lowest_price.chatette
+|./slots/product_demand.chatette
+|./slots/attr_level.chatette
+
+
+%[find_product]('training': '5000', 'testing': '200')
+    ~[user?] ~[demand] @[category] @[product_name?] @[product_battery?] @[product_color?] @[product_memory?] @[product_screensize?] @[product_screen?] @[product_waterproof]
+
+    ~[user?] ~[demand] @[product_name]
+    ~[user?] ~[demand] @[product_brand]
+
+    ~[user?] ~[demand] @[category?] @[product_name]
+    ~[user?] ~[demand] @[category?] @[product_brand]
+    ~[user?] ~[demand] @[category?] @[product_demand]
+    ~[user?] ~[demand] @[product_demand] ~[and] @[product_demand]
+    ~[user?] ~[demand] @[category?] @[product_battery] @[attr_level?]
+    ~[user?] ~[demand] @[category?] @[product_color]
+    ~[user?] ~[demand] @[category?] @[attr_level?] @[product_memory]
+    ~[user?] ~[demand] @[category?] @[attr_level?] @[product_screensize]
+    ~[user?] ~[demand] @[category?] @[product_ram] @[attr_level?]
+    ~[user?] ~[demand] @[category?] @[product_screensize] @[attr_level?]
+    ~[user?] ~[demand] @[category?] @[product_waterproof] @[attr_level?]
+    ~[user?] ~[demand] @[category?] @[product_lowest_price] @[attr_level?] 
+    ~[user?] ~[demand] @[category?] @[product_selfie_score] @[attr_level?] 
+
+    ~[user?] ~[demand] @[category?] @[brand?] @[product_name]
+    ~[user?] ~[demand] @[category?] @[brand]
+    
+    @[brand] ~[end_request?]
+    @[brand?] @[product_name] ~[end_request?]
+    @[category?] @[product_name] ~[end_request?]
+    @[category?] @[product_color] ~[end_request?]
+    @[category?] @[product_battery] @[attr_level?] ~[end_request?]
+    @[category?] @[product_screen] @[attr_level?] ~[end_request?]
+    @[category?] @[product_ram] ~[end_request?] 
+    @[category?] @[product_memory] ~[end_request?]
+    @[category?] @[product_screensize] ~[end_request?]
+    @[category?] @[product_waterproof] @[attr_level?] ~[end_request?]
+
+    //@[product_name]
+    //@[product_color]
+    //@[product_memory]
+
+|./aliases/user.chatette
+|./aliases/and.chatette
+|./aliases/demand.chatette
+|./aliases/thing.chatette
+|./slots/category.chatette
+|./slots/sale_type.chatette
+|./aliases/end_request.chatette
+
+
+%[inform_product_att_discount]('training': '300', 'testing': '50')
+    ~[user?] ~[demand] @[category?] @[discount]
+    @[category?] @[discount] ~[end_request?]
+
+|./slots/discount.chatette
+
+%[intent_suggest_product_by_frontend]('training': '300', 'testing': '50')
+    @[frontend_p1] @[product_name]
+
+|./slots/frontend_p1.chatette
+
+%[show_history_product_price]('training': '300', 'testing': '50')
+    ~[request_history] @[product_name]
+
+|./aliases/request_history.chatette
+
+%[show_review_product]('training':'300','testing':'50')
+    ~[request_review] @[product_name]
+
+|./aliases/request_review.chatette
+
+%[show_video_user_experience_product]('training':'300','testing':'50')
+    ~[request_video_user_experience_product] @[product_name]
+
+|./aliases/request_video_user_experience_product.chatette
+
+%[compare_product_by_name]('training':'300','testing':'50')
+    ~[request_compare_product_by_name] @[category?] @[product_name] ~[compare] @[category?] @[product_name] 
+
+|./aliases/compare.chatette
+|./aliases/request_compare_product_by_name.chatette
+
+%[final_find_product]('training':'300,'testing':'50')
+    ~[user] ~[final_find_product] @[product_name]
+
+|./aliases/final_find_product.chatette
+
+%[happy_satisfied]('training':'500','testing':'0')
+    ~[user] @[satisfied]
+
+|./slots/satisfied.chatette

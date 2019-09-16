@@ -1,0 +1,27 @@
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+
+cache:
+  paths:
+    - .cache/pip
+
+stages:
+  - pep8
+  - train
+
+pep8:
+  stage: pep8
+  image: clburlison/pylint:latest
+  script:
+    - find . -iname "*.py" | xargs pylint --rcfile=.pylintrc
+  allow_failure: true
+
+train:
+  stage: train
+  image: python:3.7.0
+  script:
+    - pip install -r requirements.txt --extra-index-url https://pypi.rasa.com/simple
+    - make generate-augmented && make generate-training-data
+    - make train-all
+    - mkdir -p results && make test-nlu
+  when: manual

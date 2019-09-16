@@ -1,0 +1,15 @@
+Dockerfile*
+.env.*
+.env
+.gitignore
+.git
+.env_files
+Makefile
+db
+auth
+certs
+logs
+models
+terms
+tigi_env
+train_test_split

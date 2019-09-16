@@ -1,0 +1,15 @@
+rasa:
+  production: 
+    url: http://rasa-production:5005
+    token: ${RASA_TOKEN}
+    db: rasa-production
+
+  worker: 
+    url: http://rasa-worker:5005
+    token: ${RASA_TOKEN}
+    db: rasa-worker
+
+  development: 
+    url: http://rasa-development:5005
+    token: ${RASA_TOKEN}
+    db: rasa-development

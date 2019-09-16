@@ -1,0 +1,13 @@
+{
+  "rasa_nlu_data": {
+    "common_examples": [],
+    "regex_features": [
+      {
+        "name": "datasize_information",
+        "pattern": "(\\d+(?:\\.\\d+)?)\\s*([kmgtp|KMTGP]?[b|B]?)"
+      }
+    ],
+    "lookup_tables": [],
+    "entity_synonyms": []
+  }
+}

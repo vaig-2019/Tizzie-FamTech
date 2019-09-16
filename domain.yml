@@ -1,0 +1,577 @@
+intents:
+- affirm_agree
+- affirm_disagree
+- bye
+- find_coupon
+- find_product
+- find_productgroup
+- greet
+- inform_profile
+- inform_product
+- suggestion
+- thank
+- thank_you
+- find_product_attribute
+- intent_suggest_product_by_frontend
+- show_history_product_price
+- show_review_product
+- show_video_user_experience_product
+- compare_product_by_name
+- happy_satisfied
+- final_find_product
+entities:
+- satisfied
+- brand
+- category
+- code_type
+- email
+- feedback_value
+- location
+- product_color
+- product_memory
+- product_name
+- product_ram
+- product_battery
+- product_screen
+- product_screensize
+- product_waterproof
+- product_selfie_score
+- product_lowest_price
+- product_brand
+- product_demand
+- expensive_price
+- attr_level
+- productgroup
+- sale_type
+- suggestion
+- thank
+- thank_you
+- user_age
+- user_gender
+- user_name
+- old_phone
+- number_year
+- before_high
+- high_perf
+- frontend_p1
+- request_history
+slots:
+  brand:
+    type: unfeaturized
+  email:
+    type: unfeaturized
+  feedback_value:
+    type: categorical
+    values:
+    - positive
+    - negative
+  location:
+    type: unfeaturized
+  satisfied:
+    type: unfeaturized
+  product_color:
+    type: unfeaturized
+  product_memory:
+    type: unfeaturized
+  product_ram:
+    type: unfeaturized
+  product_name:
+    type: list
+  product_battery:
+    type: unfeaturized
+  product_screen:
+    type: unfeaturized
+  attr_level:
+    type: unfeaturized
+  product_screensize:
+    type: unfeaturized
+  product_waterproof:
+    type: unfeaturized
+  product_selfie_score:
+    type: unfeaturized
+  product_lowest_price:
+    type: unfeaturized
+  product_brand:
+    type: unfeaturized
+  product_demand:
+    type: list
+  expensive_price:
+    type: unfeaturized
+  productgroup:
+    type: unfeaturized
+  requested_slot:
+    type: unfeaturized
+  user_age:
+    type: unfeaturized
+  user_gender:
+    type: unfeaturized
+  user_name:
+    type: list
+  old_phone:
+    type: unfeaturized
+  number_yead:
+    type: unfeaturized
+  before_high:
+    type: unfeaturized
+  high_perf:
+    type: unfeaturized
+  frontend_p1:
+    type: unfeaturized
+  request_history:
+    type: unfeaturized
+
+templates:
+  utter_ask_user_name:
+  - text: "Hi bạn, trước khi có thể hỗ trợ bạn một cách chu đáo nhất, bạn vui\
+      \ lòng bớt chút thời gian cho mình biết thêm thông tin về bạn nhé! \n  Bạn\
+      \ tên là gì ?"
+  - text: "Trước khi có thể hỗ trợ bạn một cách chu đáo nhất, bạn vui lòng bớt chút thời gian cho mình biết thêm thông tin về bạn nhé! Bạn tên là gì ạ?"
+  utter_ask_user_gender:
+  - text: Ầu. Cho mình hỏi xíu, bạn là nam hay nữ nhỉ ?
+  - text: "Tizzie xin bạn thêm một thông tin nữa nha, bạn cho mình biết giới tính ạ."
+  utter_ask_user_age:
+  - text: "Tizzie vừa mới chào đời cách đây ít ngày, không biết là bạn bao nhiêu tuổi rồi ạ."
+  utter_flatter_user_name:
+  - text: Trời ơi, bố mẹ cậu đặt một cái tên {user_name} nghe đã thấy yêu rồi í 😍
+  - text: Tên hay quá vậy, những người tên là {user_name} tớ thấy xinh lắm í 😚
+  - text: Tên gì mà hay hay thế xin thưa rằng tên {user_name} 😂
+  utter_finish_profile_form:
+  - text: Chào mừng {user_name} đã trở thành chủ nhân xinh đẹp của
+      Tizzie. Kể từ hôm nay tôi sẽ support hỗ trợ bạn. <3.
+  - text: "Cảm ơn {user_name} đã giúp mình hiểu hơn về bạn. Mình sẽ giúp bạn mua sắm theo đúng sở thích của bạn và giúp bạn tiết kiệm thời gian nhất."
+  utter_male_action:
+  - text: Tôi sẽ tìm cho bạn 1 chiếc điện thoại đen nam tính, cấu hình khủng để chơi
+      game nhá
+  utter_female_action:
+  - text: Bạn nữ xinh đẹp của chúng ta chắc sẽ cần 1 chiếc điện thoại màu hồng và
+      chụp ảnh đẹp chứ ? :D
+  utter_compare_name:
+  - text: điện thoại {user_name_1} nam tính. mạnh mẽ hơn điện thoại {user_name_2}
+      nè
+  utter_greet:
+  - text: Xin chào tôi là Tizzie, chẳng hay bạn cần hỗ trợ gì?
+  - text: "Xin chào, mình là Tizzie, mình có tri thức tổng hợp từ các trang thương mại điện tử nổi tiếng của Việt Nam với hàng ngàn sản phẩm và liên tục được cập nhật từng phút."
+  utter_bye:
+  - text: Cảm ơn bạn đã liên hệ cho Tizzie. Nếu bạn cần hỗ trợ thêm vấn đề nào khác,
+      bạn liên hệ lại với Tizzie bạn nhen.
+  - text: Nói chuyện với bạn sau nhé
+  - text: Chúc bạn một ngày tốt lành
+  - text: Gặp lại bạn sau nhé
+  - text: Mong là tôi có ích với bạn
+  - text: Rất vui được giúp đỡ bạn, chào nhé
+  - text: Nếu cần giúp thêm gì cứ hỏi tôi, chào nhé
+  - text: Chào bạn, chúc bạn một ngày vui vẻ :>
+  - text: Cảm ơn bạn nhiều, chúc bạn một ngày vui vẻ!
+  - text: Bye, hi vọng bạn sẽ tìm đến Tizzie trong những lần sau.
+  utter_default:
+  - text: Xin lỗi tôi không hiểu điều này bạn có thể hỏi lại theo một cách khác được
+      không
+  - text: Tôi không hiểu bạn hỏi lại được không
+  - text: Xin lỗi tôi không hiểu bạn, xin bạn hỏi lại
+  - text: Tôi e là mình không hiểu những gì bạn nói, bạn hỏi lại đi ạ
+  - text: Tôi xin lỗi khi không hiểu bạn đang hỏi gì, bạn có thể hỏi lại không
+  - text: Tôi chưa hiểu rõ lắm, bạn hỏi lại được không
+  - text: sorry, tôi không hiểu
+  - text: Đôi lúc mình sẽ không hiểu được từng lời vàng ngọc của bạn, bạn đừng buồn
+      phiền 😚 vì mình vẫn đang dùng công nghệ trí tuệ nhân tạo để tiến bộ từng ngày,
+      một câu hỏi dễ hiểu hơn sẽ giúp mình mang lại cho bạn trải nghiệm tuyệt vời
+      hơn.
+  - text: Câu hỏi của bạn quá lắt léo so với một trợ lý ảo như mình 🙏 bạn có thể thay
+      câu ấy bằng một câu hỏi dễ dàng hơn được không ạ
+  - text: Một câu hỏi xuất sắc 👏 nhưng có lẽ mình chỉ là một người máy, chưa đủ xuất
+      chúng và cần thêm thời gian tu luyện, bạn hãy thử thách mình bằng một câu hỏi
+      khác nhé !
+  - text: Một câu hỏi trắc trở như đường vào tim bạn 😭. Hãy để mình hiểu bạn hơn bằng
+      một câu hỏi phẳng phiu hơn.
+  - text: Opps!Em thấy có gì đó sai sai vì không thể trả lời ngay lập tức câu hỏi
+      này của Chị 😭. Có thể do em chỉ là TRỢ LÝ ẢO 😭
+  - text: Tizzie không hiểu câu này. Bạn có muốn tiếp tục nói chuyện với Tizzie không?
+  - text: Nghĩa là gì nhỉ?
+  - text: Bạn muốn tìm kiếm gì vây?
+  utter_noworries:
+  - text: Không có gì, bạn đừng lo
+  - text: Rất hân hạnh được hỗ trợ bạn
+  - text: Rất vui vì được giúp đỡ bạn
+  - text: Tizzie rất vui được hỗ trợ bạn ^^
+  - text: Chúc bạn một ngày vui vẻ nhé.
+  - text: Your welcome 😚
+  - text: Được giúp đỡ bạn là niềm vinh hạnh của Tizzie
+  - text: Không có chi đâu mà
+  utter_what_help:
+  - text: Bạn có cần hỗ trợ thêm gì không?
+  - text: Tôi có thể giúp gì cho bạn đây?
+  - text: Bạn có cần hỗ trợ thêm gì khác không ạ?
+  - text: Bạn có hỏi thêm gì khác không ạ?
+  - text: Hẳn là bạn đang cần tôi giúp đúng không
+  - text: Bạn cần tôi giúp gì nữa không?
+  - text: Bạn thích nói chuyện với tôi chứ, bạn có cần gì nữa không?
+  - text: Có rất nhiều sản phẩm khác có thể đáp ứng nhu cầu của bạn, bạn có muốn tham
+      khảo thêm không?
+  - text: Hãy nói với tôi nếu bạn cần hỗ trợ gì khác nhé
+  - text: Mình rất vui nếu được tiếp tục nói chuyện với bạn. Bạn có muốn xem sản phẩm
+      nào khác không?
+  utter_ask_feedback_message:
+  - text: Khi bạn đóng cuộc trò chuyện, khảo sát đánh giá chất lượng tư vấn khách
+      hàng của Tizzie sẽ hiện ra. Nếu bạn không phiền, bạn nán lại thực hiện giúp mình
+      nhé.
+  - text: Bạn có gợi ý gì để tôi có thể cải thiện mình được không
+  - text: Tôi biết là tôi vẫn còn nhiều thiếu sót,nhưng nếu bạn góp ý tôi sẽ cải thiện
+      để lần sau gặp bạn sẽ tốt hơn
+  - text: Tizzie rất mong muốn bạn có thể feedback một vài điểm Tizzie còn thiếu sót để
+      có thể hỗ trệ mọi người tốt hơn
+  - text: Tizzie sẽ thân thiện hơn nhờ bạn, hãy cho tôi phản hồi về sự hài lòng của
+      bạn
+  - text: Bạn nhận xét về tôi như thế nào :))
+  - text: Bạn thấy tôi thế nào, những góp ý sẽ giúp tôi hoàn thiện hơn
+  - text: Cho tôi biết bạn nghĩ gì về tôi nhé. Nhận xét của bạn giúp tôi phát triển
+      hơn mỗi ngày
+  - text: Bạn đánh giá như thế nào về tôi. Hãy cho tôi biết nhé
+  - text: Bạn thích trò chuyện với tôi chứ, cho tôi phản hồi nhé
+  utter_thanks_for_feedback:
+  - text: Cảm ơn bạn về lời gợi ý. Tizzie sẽ mang đến cho bạn sự hài lòng tốt hơn trong
+      tương lai
+  - text: Cảm ơn vì sự góp ý của bạn,tôi sẽ cố gắng cải thiện
+  - text: Tizzie rất cảm ơn vì đóng góp của bạn, Tizzie sẽ cải thiện nó :>
+  - text: Những feedback của bạn giúp cho Tizzie rất nhiều đấy, cảm ơn nhé!
+  - text: Ồ, đó sẽ là những thông tin thú vị, tôi rất biết ơn vì điều đó
+  - text: Học hỏi là việc cả đời, gợi ý của bạn sẽ là những bài học bổ ích cho tôi
+  utter_not_sure:
+  - text: Tôi không chắc bạn muốn gì
+  - text: Tôi không chắc tôi có thể giúp bạn tìm được thứ mình muốn hay không nhưng
+      có gì xin cứ nói với tôi nhé
+  - text: Tizzie chưa hiểu rõ câu hỏi của bạn lắm, bạn hỏi lại được không?
+  - text: Xin lỗi nhưng mình chưa hiểu rõ ý bạn lắm, bạn nói lại được không?
+  - text: Ý bạn là sao vậy, tôi chưa hiểu lắm
+  - text: Bạn có thể nói rõ hơn không, tôi không chắc mình hiểu đúng
+  - text: Ủa, ý bạn là gì nhỉ? :)
+  - text: Do trên hệ thống em không check mã nước được nên không thông tin chính xác
+      được, Anh có thể ghé qua cửa hàng để được nhân viên hỗ trợ check mã sản phẩm,
+      em xin lỗi vì sự bất tiện này ạ.
+  - text: Anh/ chị có thể nói rõ hơn về sản phẩm được không ạ
+  - text: Tizzie hiện tin nhắn đang quá tải. Anh/Chị vui lòng để lại SĐT hoặc liên hệ
+      số Hotline {hotline} để được tư vấn và phục vụ kịp thời. Tizzie chân thành cảm
+      ơn & Rất xin lỗi anh/chị về sự bất tiện.
+  utter_react_negative:
+  - text: 😢
+  - text: Mình rất tiếc về bất tiện hiện tại bạn đang gặp phải khi trải nghiệm máy
+      chưa được như ý và mình sẽ hỗ trợ bạn về vấn đề này ạ.
+  - text: Tôi khá buồn 😥😥
+  - text: Bạn có thấy tôi đang buồn không
+  utter_react_positive:
+  - text: 😍
+  - text: Dạ thế thì hay quá ạ
+  - text: Dạ không có gì đâu ạ
+  - text: Cảm ơn bạn luôn tin tưởng Tizzie.
+  - text: woww
+  - text: 🤩🤩🤩
+  - text: 💞💞
+  utter_ask_email:
+  - text: Tôi muốn liên lạc với bạn thì phải liên lạc qua email nào vậy?
+  - text: Bạn có thể cho tôi xin email liên lạc đuaược không?
+  - text: Tizzie có thể liên lạc với bạn qua email nào vậy?
+  - text: Bạn có email chứ? Hãy cho Tizzie địa chỉ email của bạn để chúng ta có thể
+      giữ liên lạc với nhau.
+  - text: Tôi sẽ liên lạc với bạn qua email, email của bạn là gì?
+  utter_product_finding:
+  - text: "Tizzie tìm thấy {product_name} - {product_color} - {product_memory} :\n \
+      \  Bạn có thể truy cập đường link sau: {product_url}"
+  utter_product_coupon_finding:
+  - text: 'Tizzie đang dồn hết sức lực để tìm mã giảm giá cho {product_name} bạn nhé.
+      Yên tâm có ngay đây :p '
+  utter_product_group_finding:
+  - text: 'Tizzie sẽ tìm cho bạn nhóm sản phẩm {product_group} nhé :D '
+  utter_ask_product_group:
+  - text: Bạn muốn tìm nhóm sản phẩm nào?
+  - text: Bạn đang quan tâm nhóm sản phẩm nào vậy?
+  - text: Bạn muốn tìm nhóm sản phẩm dựa theo tiêu chí nào vậy?
+  - text: Nhóm sản phẩm mà bạn đang tìm kiếm là gì vây?
+  - text: Tizzie có thể tìm kiếm nhóm sản phẩm nào cho bạn đây?
+  - text: Bạn có thể nói cho tôi biết về nhóm sản phẩm bạn thích không?
+  - text: Tôi muốn biết nhóm sản phẩm bạn đang tìm kiếm :))
+  - text: Nếu đây không phải sản phẩm bọn muốn tìm kiếm, bạn có thể miêu tả rõ hơn
+      được không ?
+  utter_ask_brand:
+  - text: hãng nào bạn
+  - text: bạn muốn tìm sản phẩm của hãng nào
+  utter_group_product_response:
+  - text: Bạn tham khảo tất cả sản phâm {product_name} tại link này ạ {link}
+  - text: Bạn có thể tham khảo các sản phẩm dưới đây
+  utter_ask_product_name:
+  - text: Bạn muốn tìm sản phẩm nào?
+  - text: Bạn đang quan tâm sản phẩm nào vậy?
+  - text: Bạn muốn tìm sản phẩm dựa theo tiêu chí nào vậy?
+  - text: Sản phẩm bạn muốn tìm kiếm là gì vậy?
+  - text: Tôi có thể tìm sản phẩm nào cho bạn đây?
+  - text: Bạn quan tâm sản phẩm nào, tôi sẽ cho bạn thêm thông tin về sản phẩm đó
+  - text: Bạn muốn biết thêm về sản phẩm nào?
+  - text: Để có nhận được gợi ý tốt nhất, hãy cho Tizzie biết bạn đang quan tâm về sản
+      phẩm nào?
+  - text: Không biết bạn đang quan tâm đến sản phẩm nào nhỉ?
+  utter_ask_product_color:
+  - text: Bạn muốn màu gì?
+  - text: Thiết bị này với màu sắc nào bạn cảm thấy vừa lòng nhất ?
+  - text: Màu sắc yêu thích của bạn là gì?
+  - text: Bạn muốn tìm sản phẩm màu nào vậy?
+  - text: Bạn thích sản phẩm có màu như nào vậy?
+  - text: Hãy cho Tizzie biết màu mà bạn thích
+  - text: Màu sắc nào là sự lựa chọn của bạn
+  - text: Bạn (hay người yêu bạn) thích màu gì
+  - text: Không biết bạn thích màu gì nhỉ?
+  utter_ask_product_memory:
+  - text: Bạn cần bộ nhớ bao nhiêu?
+  - text: Bộ nhớ bao nhiệu là phù hợp với bạn?
+  - text: Bạn muốn sản phẩm có bộ nhớ bao nhiêu vậy?
+  - text: Bạn lựa chọn dung lượng bao nhiêu cho bộ nhớ?
+  utter_ask_location:
+  - text: Bạn ở khu vực nào ?
+  - text: Bạn cần mua sản phẩm ở đâu?
+  - text: Địa điểm nào thì thuận tiện cho việc mua sắm của bạn?
+  - text: Hãy cho Tizzie biết nơi mà bạn muốn mua sản phẩm
+  - text: Bạn ở đâu nhỉ, cho tôi địa chỉ tôi sẽ tìm cửa hàng gần đó cho bạn 😀
+  utter_response_location:
+  - text: Bạn có thể mua sản phẩm ở các địa điểm sau {shoplocation}
+  utter_ask_pay:
+  - text: Bạn muốn thanh toán trả trước hay trả sau?
+  - text: Bạn muốn trả góp hay thanh toán trong một lần?
+  - text: Đây là một số đơn vị hỗ trợ trả góp có thể giúp đỡ bạn
+  utter_ask_confirm_bill:
+  - text: Đơn hàng của bạn gồm {salelink} đúng không ?
+  - text: Sản phẩm bạn cần có phải đây không {salelink}
+  utter_wait_searching:
+  - text: Sản phẩm {product_name} - {product_color} - {product_memory} đang được tìm
+      kiếm. Hãy đợi chúng tôi trong vài giây nữa nhé
+  - text: Xin lỗi, chúng tôi cần thêm chút thời gian để cho bạn sự gợi ý tốt nhất
+  utter_ask_range_price:
+  - text: Mức giá bạn muốn tìm kiếm là bao nhiêu?
+  - text: Tầm giá {pricerange} có phải bạn đang nghĩ tới ?
+  - text: Đây có phải mức giá bạn mong muốn ?
+  - text: Bạn muốn rẻ hơn hay ngang giá.
+  - text: Bạn có muốn tìm kiếm sản phẩm tương tự ở mức giá khác không?
+  - text: Bạn muốn mua sản phẩm trong tầm giá bao nhiêu?
+  - text: Bạn dự tính sẽ mua sản phẩm với giá bao nhiêu?
+  - text: Bạn đang tìm sản phẩm với mức giá nào
+  - text: Bạn quan tâm trong tầm giá bao nhiêu
+  - text: Mức giá bao nhiêu bạn có thể chấp nhận được
+  - text: Giá cả có là vấn đề với bạn, bạn lựa chọn trong tầm giá bao nhiêu?
+  utter_hot_sale:
+  - text: '{salelink}. Đang có chương trình khuyến mãi, mời anh/chị tham khảo '
+  - text: '{salelink}. Anh/ chị tham khảo thêm nhé '
+  utter_product_suggest:
+  - text: Bạn có thể tham khảo {product_name} bạn nhé
+  - text: Bạn có thể tham khảo {product_name} ở link {productlink} này nhé
+  utter_ask_contact:
+  - text: Tôi có thể  liên lạc với bạn bằng cách nào?
+  - text: Bạn cho tôi thông tin liên lạc được không?
+  - text: Tôi có thể liên lạc với bạn chứ, chẳng hạn điện thoại hay fb hay email,..
+  - text: Bạn thích nói chuyện với Tizzie chứ, cho Tizzie thông tin liên lạc nhé 🤗
+  utter_history_product:
+  - text: Bạn đã từng mua sản phẩm nào trước đây rồi
+  - text: Sản phẩm nào bạn đã từng sử dụng
+  - text: Trước đây bạn mua sản phẩm nào rồi
+  utter_suggestion_form:
+  - text: Tizzie có gì khiến bạn chưa hài lòng không nhỉ ? :D
+  - text: Bạn có đề xuất gì với chúng tôi ko?
+  - text: Bạn vui lòng bớt chút thời gian cho khảo sát này nhé.
+  utter_rating_form:
+  - text: Bạn cảm thấy thế nào về chất lượng tư vấn của chúng tôi?
+  - text: Chất lượng những sản phẩm mà Tizzie mang lại có phù hợp với bạn không
+  - text: bạn hài lòng với với những sản phẩm mà Tizzie mang đến chứ
+  find_product_group:
+  - text: Tìm nhóm sản phẩm
+  - text: Không biết bạn muốn tìm nhóm sản phẩm về gì nhỉ
+  - text: Tizzie đang tìm nhóm sản phẩm cho bạn, sẽ có ngay đây
+  - text: Nhóm sản phẩm của bạn đây
+  utter_suggest_user_experience:
+  - text: "Tizzie sẽ check vị trí của bạn... \n \
+  \ Bạn thử đến địa chỉ sau để trải nghiệm sản phẩm nhé: \n \
+  \ %%product_location%%||{product_location}||"
+  utter_suggest_user_experience_url:
+  - text: "Bạn có thể đến tận nơi để trải nghiệm và cảm nhận trực tiếp nhé. Khi ưng ý thì quay về với Tizzie, mình sẽ giúp bạn đặt mua sản phẩm tại \n \
+  \ {product_url}" 
+
+  utter_suggestion_product_color_form:
+  - text: lấy mầu {product_color} cho nó rất gì và này nọ nhé !!!
+  - text: bạn có thể thử qua {product_color}
+  - text: '{product_color} thì sao nhỉ?'
+  - text: hãy thử với {product_color} nhé
+  utter_suggestion_product_memory_form:
+  - text: Bạn xem bản Ram {product_memory} có được không?
+  - text: Bạn có thể xem qua Ram {product_memory}
+  - text: Ram {product_memory} thì sao nhỉ?
+  utter_suggestion_product_name_form:
+  - text: Mua thử con {product_name} chơi xem, xịn phết :>
+  - text: Bạn nên thử cái {product_name} này
+  - text: Cái {product_name} này rất phù hợp với bạn
+  - text: Thật là uổng phí nếu bạn bỏ qua {product_name} này
+  - text: bạn có thể xem qua {product_name}, Tizzie thấy khá là phù hợp với bạn
+  utter_confirm_product_color_form:
+  - text: ok vậy quyết định lấy mầu {product_color}^^!!!
+  - text: okela lấy {product_color}
+  - text: '{product_color} mà bạn cần tìm đây'
+  - text: Bạn chờ chút xúi nhé, mình sẽ tìm {product_color} cho bạn
+  - text: oki, tôi sẽ tìm {product_color} cho bạn
+  - text: đồng ý, vậy quyết định lấy {product_color} ^^ !!!
+  utter_confirm_product_memory_form:
+  - text: âu kê con dê chơi khô máu bộ nhớ {product_memory}!!!
+  - text: đồng ý, bộ nhớ {product_memory}
+  - text: oki, tôi sẽ tìm bộ nhớ {product_memory} cho bạn
+  - text: bộ nhớ {product_memory} mà bạn cần tìm đây
+  - text: Bạn chờ chút xúi nhé, mình sẽ tìm bộ nhớ {product_memory} cho bạn
+  - text: oki, tôi sẽ tìm {product_memory} cho bạn
+  - text: đồng ý, vậy quyết định lấy bộ nhớ {product_memory} ^^ !!!
+  utter_confirm_product_name_form:
+  - text: okela lấy {product_name}
+  - text: '{product_name} mà bạn cần tìm đây'
+  - text: Bạn chờ chút xúi nhé, mình sẽ tìm {product_name} cho bạn
+  - text: oki, tôi sẽ tìm {product_name} cho bạn
+  - text: đồng ý, vậy quyết định lấy {product_name} ^^ !!!
+  utter_product_not_found:
+  - text: Không tìm thấy sản phẩm này
+  utter_not_found:
+  - text: Tìm khó quá bạn ơi. sản phẩm như thế Tizzie chịu rùi =='
+  - text: Bạn thử thay đổi 1 thông số của điện thoại đi <3
+  utter_suggest_full_phone:
+  - text: "Hay bạn dùng thử sản phẩm này nhá -> {product_name} - {product_color} - {product_memory} :\n Bạn có thể truy cập đường link sau: {product_url}"
+  utter_suggest_features:
+  - text: "Như đã giới thiệu, mình có rất nhiều tri thức để hỗ trợ bạn tìm kiếm và tư vấn cho bạn các tính năng phù hợp với nhu cầu của bạn nha."
+  utter_advise_old_phone:
+  - text: "Vâng, {old_phone} đã ra đời cũng tương đối lâu rồi, đã đến lúc để bạn nâng cấp lên."
+  utter_ask_require_high_performance:
+  - text: "Không biết là bạn có chơi game hay sử dụng các ứng dụng đồ họa 3D không ạ?"
+  utter_product_suggest_while_is_required_high_performance:
+  - text: "Một chú {product_name} màn hình tràn viền tuyệt đẹp chắc chắn sẽ giúp bạn tối ưu trải nghiệm chơi game và xem video độ phân giải lên đến 4k. \n \
+  \ Tầm giá {product_price} đồng \n \
+  \ {url}"
+  utter_product_suggest_while_product_is_high:
+  - text: "Ở tầm giá thấp hơn một chút, bạn xem thử con {product_name} cũng rất gì và này nọ luôn nhé."
+  utter_product_compare_products:
+  - text: "{product_name} rẻ hơn {value_price} đồng, dưới đây là tổng hợp so sánh ưu nhược 2 sản phẩm:"
+  utter_product_compare_products_table:
+  - text: "%%product_cheap%%||{product_cheap}||  %%summary_product_cheap%%||{summary_product_cheap}||  \n \ 
+  \ %%img_cheap%%||{img_cheap}||
+  \ %%product_expensive%%||{product_expensive}|| %%summary_product_expensive%%||{summary_product_expensive}||
+  \ %%img_expensive%%||{img_expensive}||"
+  utter_product_detail:
+  - text: "{product_specs}"
+  utter_product_detail_video:
+  - text: "%%video%%||{url_video_review}||"
+  utter_show_video_review:
+  - text: "%%video%%||{url}||"
+  utter_ask_for_selection:
+  - text: "Chắc bạn đã xem xong review sản phẩm {product_name} rồi. Ở gần đây có cửa hàng có trưng bày sản phẩm đó."
+  utter_ask_subcribe:
+  - text: "Vâng ạ. Không biết là Tigi có thể thêm bạn vào danh sách đăng ký nhận tin tức không ạ? Tigi sẽ chủ động cập nhật cho bạn những hot deal khuyến mãi từ các trang thương mại điện tử nhanh nhất có thể."
+  utter_finish_conversation:
+  - text: "Tigi đã thêm bạn vào danh sách đăng ký, từ nay Tigi sẽ phục vụ bạn mọi lúc mọi nơi. {user_name} chỉ cẩn nhắn với mình bất cứ khi nào bạn nhớ Tigi nhé."
+  utter_restart:
+  - text: "Mình trò chuyện lại từ đầu nhé!"
+  utter_finish_find_product:
+  - text: "Tizzie biết nhiều thông tin lắm, bạn còn băn khoăn gì về tính năng của <product_name> cứ hỏi Tizzie đi. Nếu đã hài lòng với sản phẩm này bạn hãy nói “Tôi hài lòng” nhé."
+  utter_finish_recommend:
+  - text: 'Tizzie nghĩ những sản phẩm sau đây sẽ phù hợp với nhu cầu của bạn. Tigi có thể giúp bạn "Xem review", "Xem chi tiết" và "Xem lịch sử giá" của các sản phẩm. Ngoài ra bạn có thể  "Giới hạn" các tiêu chí tìm kiếm hoặc "Tìm" sản phẩm theo tiêu chí khác. Để kết thúc phiên tìm kiếm bạn vui lòng nói với Tizzie "Tôi chọn sản phẩm" nào nhé.'
+  utter_ask_for_demand:
+  - text: 'Để làm rõ hơn mong muốn của bạn, bạn vui lòng cho Tizzie biết bạn "Sử dụng" điện thoại phục vụ cho nhu cầu nào ạ?'
+  utter_suggest_top_product:
+  - text: "Trong những sản phẩm này, Tizzie cho rằng Samsung Galaxy A80 sẽ phù hợp nhất với nhu cầu chơi game và công việc hàng ngày ở một mức giá tốt."
+  utter_suggest_comparison_releaseddate:
+  - text: "{product_name} là sản phẩm đã ra cách đây <number> năm, bạn nên cân nhắc. Bạn hãy nói cho Tizzie 'Tôi chọn' sản phẩm nào nhé"
+  utter_suggest_comparison_price:
+  - text: "{product_name} sẽ tốn thêm <number> triệu, bạn nên cân nhắc. Bạn hãy nói cho Tizzie 'Tôi chọn' sản phẩm nào nhé"
+  utter_location_product:
+  - text: "Tizzie tìm giúp bạn địa chỉ gần nhất nơi bạn có thể trải nghiệm thực tế của sản phầm này nha. "
+  utter_demand_question:
+  - text: 'Để làm rõ hơn mong muốn của bạn, bạn vui lòng cho Tizzie biết bạn "Sử dụng" điện thoại phục vụ cho nhu cầu nào ạ?'
+actions:
+- action_ask_for_selection
+- action_show_video_review
+- utter_show_video_review
+- action_chat_restart
+- action_chitchat
+- action_curse
+- action_confirm_by_product_color
+- action_confirm_by_product_memory
+- action_confirm_by_product_name
+- action_reset_product_color
+- action_reset_product_memory
+- action_reset_product_name
+- action_reset_slot
+- action_suggest_by_product_color
+- action_suggest_by_product_memory
+- action_suggest_by_product_name
+- action_ask_for_demand
+- find_coupon
+- find_product
+- find_product_group
+- multi_name_action 
+- utter_ask_product_name
+- utter_ask_product_color
+- utter_ask_product_memory
+- utter_ask_confirm_bill
+- utter_ask_contact
+- utter_ask_email
+- utter_ask_pay
+- utter_ask_range_price
+- utter_ask_user_age
+- utter_ask_user_date_of_birth
+- utter_ask_user_favorite
+- utter_ask_user_gender
+- utter_ask_user_name
+- utter_ask_user_work
+- utter_bye
+- utter_compare_name
+- utter_confirm_user_name
+- utter_female_action
+- utter_flatter_user_name
+- utter_greet
+- utter_group_product_response
+- utter_history_product
+- utter_hot_sale
+- utter_male_action
+- utter_not_found
+- utter_not_sure
+- utter_noworries
+- utter_product_finding
+- utter_product_not_found
+- utter_product_suggest
+- utter_rating_form
+- utter_react_negative
+- utter_react_positive
+- utter_response_location
+- utter_self_intro
+- utter_suggest_full_phone
+- utter_suggestion_form
+- utter_thanks_for_feedback
+- utter_wait_searching
+- utter_product_compare_products
+- utter_product_compare_products_table
+- action_product_compare_products
+- utter_product_detail
+- utter_product_detail_video
+- action_product_detail
+- utter_ask_for_selection   
+- utter_ask_subcribe
+- utter_finish_conversation
+- utter_finish_profile_form
+- utter_suggest_user_experience
+- utter_suggest_user_experience_url
+- action_suggest_user_experience
+- action_suggest_product_by_attribute
+- action_greet
+- action_show_detail_product
+- action_show_history_product
+- action_default_fallback
+- action_restart
+- action_show_review_product
+- action_show_video_user_experience_product
+- action_compare_product_by_name
+- action_finish_find_product
+- action_query_color_product
+- action_happy_product
+
+forms:
+- product_coupon_form
+- product_form
+- productgroup_form
+- profile_form
+- rating_form
+- suggestion_form
